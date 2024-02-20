@@ -19,9 +19,7 @@ const restaurant = {
       close: 24,
     },
   },
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+
   orderDelivery: function ({
     starterIndex = 1,
     mainIndex = 0,
@@ -80,7 +78,7 @@ const {
 } = openingHours;
 console.log(open, close);
 
-let {
+const {
   fri: { open: o, close: c },
 } = openingHours;
 console.log(o, c);
