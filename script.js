@@ -1,4 +1,7 @@
 "use strict";
+
+// 107. Rest Pattern and Parameters
+
 const restaurant = {
   name: "Classico Italiano",
   location: "Via Angelo Tavanti 23, Firenze, Italy",
@@ -19,7 +22,9 @@ const restaurant = {
       close: 24,
     },
   },
-
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
   orderDelivery: function ({
     starterIndex = 1,
     mainIndex = 0,
@@ -35,37 +40,51 @@ const restaurant = {
       `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
 
-const arr = [7, 8, 9];
-const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
-console.log(badNewArr);
-const newArr = [1, 2, ...arr];
-console.log(newArr);
-console.log(...newArr);
-console.log(1, 2, 7, 8, 9);
-const newMenu = [...restaurant.mainMenu, "Gnocci"];
-console.log(newMenu);
-const mainMenuCopy = [...restaurant.mainMenu];
-const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(menu);
-const str = "Jonas";
-const letters = [...str, " ", "S"];
-console.log(letters);
-console.log(...str);
+// ----------- 1 --------------
+// const arr = [1, 2, ...[3, 4]];
+// console.log(arr);
+// Output : (4) [ 1, 2, 3, 4]
 
-const ingredients = [
-  // prompt("Let's make pasta! Integredient 1? "),
-  // prompt("Ingredient 2? "),
-  // prompt("Ingredient 3  "),
-];
-console.log(...ingredients);
-restaurant.orderPasta(...ingredients);
+// ----------- 2 --------------
+// const [a, b, ...other] = [1, 2, 3, 4, 5];
+// console.log(a, b, other);
+// Output : 1 2 (3) [ 3, 4, 5]
 
-const newRestaurant = { founderIn: 1998, ...restaurant, founder: "Guiseppe" };
-console.log(newRestaurant);
+// ----------- 3 --------------
+// const [pizza, , risotto, ...otherFood] = [
+//   ...restaurant.mainMenu,
+//   ...restaurant.starterMenu,
+// ];
+// console.log(pizza, risotto, ...otherFood);
+// Output : Pizza Risotto Focaccia Bruschetta Garlic Bread Caprese Salad
 
-const restaurantCopy = { ...restaurant };
-restaurantCopy.name = "Ristorante Roma";
-console.log(restaurantCopy.name);
-console.log(restaurant.name);
+// ----------- 4 --------------
+// const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(weekdays);
+// Output : thu: { open: 12, close: 22}, fri: { open: 11 , close: 23, }
+
+// ----------- 5 --------------
+// const add = function (...numbers) {
+//   console.log(numbers);
+// };
+// add(2, 3, 5);
+// Output: (3)[(2, 3, 5)];
+// const x = [23, 5, 7];
+// add(...x);
+// Output : (3) [23, 5, 7]
+
+// ----------- 6 --------------
+// restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
+
+// Output : mushrooms
+//          (3) ['onion', 'olives', 'spinach']
+
+// restaurant.orderPizza("mushrooms");
+// Output : mushrooms
+//          []
