@@ -1,6 +1,6 @@
 "use strict";
 
-// 109 The Nullish Coalescing Operator(??)
+// 110 Logical Assignment Operators
 
 const restaurant = {
   name: "Classico Italiano",
@@ -47,12 +47,55 @@ const restaurant = {
   },
 };
 
-restaurant.numguests = 0;
-const guests = restaurant.numguests || 10;
-console.log(guests);
+const rest1 = {
+  name: "Capri",
+  numGuests: 0,
+};
+const rest2 = {
+  name: "La Piazza",
+  owner: "Giovanni Rossi",
+};
+// OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+// console.log(rest1.numGuests);
+// Output : 10
+// console.log(rest2.numGuests);
 // Output : 10
 
-// Nullish : null and undefined (NOT 0 or  "")
-const guestsCorrect = restaurant.numguests ?? 10;
-console.log(guestsCorrect);
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+// console.log(rest1.numGuests);
+// // Output: 10;
+// console.log(rest2.numGuests);
+// // Output: 10;
+
+// Nullish assignment operator
+// rest1.numGuests = rest1.numGuests ?? 10;
+// rest2.numGuests = rest2.numGuests ?? 10;
+// console.log(rest1.numGuests);
 // Output : 0
+// console.log(rest2.numGuests);
+// Output : 10
+
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
+// console.log(rest1.numGuests);
+// // Output: 0;
+// console.log(rest2.numGuests);
+// // Output: 10;
+
+// AND assignment operator
+// rest1.owner = rest1.owner && "<ANONYMOUS>";
+// rest2.owner = rest2.owner && "<ANONYMOUS>";
+// console.log(rest1.owner);
+// Output : undefined
+// console.log(rest2.owner);
+// Output: <ANONYMOUS>
+
+// rest1.owner &&= 10;
+// rest2.owner &&= 10;
+// console.log(rest1.owner);
+// Output: undefined
+// console.log(rest2.owner);
+// Output: <ANONYMOUS>
