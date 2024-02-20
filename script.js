@@ -30,55 +30,42 @@ const restaurant = {
       `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your declicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
 
-restaurant.orderDelivery({
-  time: "22:30",
-  address: "Via del sole, 21",
-  mainIndex: 2,
-  starterIndex: 2,
-});
+const arr = [7, 8, 9];
+const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+const newArr = [1, 2, ...arr];
+console.log(newArr);
+console.log(...newArr);
+console.log(1, 2, 7, 8, 9);
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+console.log(newMenu);
+const mainMenuCopy = [...restaurant.mainMenu];
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+const str = "Jonas";
+const letters = [...str, " ", "S"];
+console.log(letters);
+console.log(...str);
 
-restaurant.orderDelivery({
-  address: "Via del sole, 21",
-  starterIndex: 2,
-});
+const ingredients = [
+  // prompt("Let's make pasta! Integredient 1? "),
+  // prompt("Ingredient 2? "),
+  // prompt("Ingredient 3  "),
+];
+console.log(...ingredients);
+restaurant.orderPasta(...ingredients);
 
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+const newRestaurant = { founderIn: 1998, ...restaurant, founder: "Guiseppe" };
+console.log(newRestaurant);
 
-// Changing Variable Name
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-
-//Default values
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
-
-// Mutating variables
-let a = 111;
-let b = 999;
-const obj = {
-  a: 23,
-  b: 7,
-  c: 14,
-};
-({ a, b } = obj);
-console.log(a, b);
-
-const { fri } = openingHours;
-console.log(fri);
-
-const {
-  fri: { open, close },
-} = openingHours;
-console.log(open, close);
-
-const {
-  fri: { open: o, close: c },
-} = openingHours;
-console.log(o, c);
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = "Ristorante Roma";
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
