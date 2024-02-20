@@ -1,6 +1,6 @@
 "use strict";
 
-// 108 Short Circuiting(&& and ||)
+// 109 The Nullish Coalescing Operator(??)
 
 const restaurant = {
   name: "Classico Italiano",
@@ -47,35 +47,12 @@ const restaurant = {
   },
 };
 
-console.log("-------- OR --------");
-// Use Any data type, return any data type, short-circuiting
-console.log(3 || "Jonas");
-// Output : 3
-console.log("" || "Jonas");
-// Output : "Jonas"
-console.log(true || 0);
-// Output : true
-console.log(undefined || null);
-// Output : null
-console.log(undefined || 0 || "" || "Hello" || 23 || null);
-// Output : Hello
-restaurant.newGuests = 23;
-const guests1 = restaurant.newGuests ? restaurant.newGuests : 10;
-console.log(restaurant.newGuests);
-// Output : 23
-const guest2 = restaurant.newGuests || 10;
-console.log(guest2);
-// Output : 23
-console.log(0 && "Jonas");
+restaurant.numguests = 0;
+const guests = restaurant.numguests || 10;
+console.log(guests);
+// Output : 10
+
+// Nullish : null and undefined (NOT 0 or  "")
+const guestsCorrect = restaurant.numguests ?? 10;
+console.log(guestsCorrect);
 // Output : 0
-console.log(7 && "Jonas");
-// Output : Jonas
-console.log("Hello" && 23 && null && "Jonas");
-if (restaurant.orderPizza) {
-  restaurant.orderPizza("mushroom", "spinach");
-}
-// Output : mushroom
-//          ['spinach']
-restaurant.orderPizza && restaurant.orderPizza("mushroom", "spinach");
-// Output : mushroom
-//          ['spinach']
